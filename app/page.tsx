@@ -1,11 +1,8 @@
-import styles from './page.module.scss'
-
+import Search from "@/components/Search";
 export default function Home() {
   return (
-    <main className={``}>
-test
+    <main className="overflow-hidden">
+      <Search />
     </main>
-  )
+  );
 }
-
-
