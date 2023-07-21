@@ -1,25 +1,27 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Search from "@/components/Search";
 
 const Navbar = () => {
   return (
-    <header className="w-full z-10">
-      <nav className="mx-auto flex justify-between items-center py-6">
-        <Link href="/" className="flex justify-center items-center">
-          <Image
-            src="/vercel.svg"
-            alt="Logo"
-            width={118}
-            height={18}
-            className="object-contain"
-          />
-        </Link>
-        <button>
+    <nav className="flex justify-between md:flex-row p-6">
+      <Link href="/" className="w-fit">
+        <Image
+          src="/vercel.svg"
+          alt="Logo"
+          width={118}
+          height={18}
+          className="object-contain"
+        />
+      </Link>
+      <div className="flex gap-5">
+        <Search />
+        <button className="block m-0">
           Sign In <span aria-hidden="true">&rarr;</span>
         </button>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 };
 export default Navbar;
