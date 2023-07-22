@@ -1,7 +1,7 @@
 import { SearchResult } from "@/types";
 
 export default async function (searchResult: SearchResult) {
-  const res = await fetch("http://localhost:3000/api/search-result", {
+  const res = await fetch(`${process.env.apiBaseUrl}/api/search-result`, {
     method: "POST",
     body: JSON.stringify(searchResult),
   });
