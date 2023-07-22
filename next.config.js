@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-const path = require('path')
+const nextConfig = {};
+const path = require("path");
 
-
-module.exports = nextConfig
+module.exports = nextConfig;
 
 module.exports = {
-    sassOptions: {
-        includePaths: [path.join(__dirname, 'styles')],
-    },
-}
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
+  },
+};
+
+module.exports = {
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ["mongoose"],
+  },
+};
