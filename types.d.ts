@@ -16,9 +16,8 @@ export type GenderizeResponse = {
   probability: number;
 };
 
-export type searchResult = {
+export type SearchResult = {
   search: string;
-  date: string;
   results: {
     nationality: NationalizeResponse;
     gender: GenderizeResponse;
