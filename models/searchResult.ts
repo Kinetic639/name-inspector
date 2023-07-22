@@ -2,7 +2,7 @@ import { model, models, Schema } from "mongoose";
 
 const SearchResultSchema = new Schema(
   {
-    search: { type: String, required: true, trim: true },
+    search: { type: String, trim: true, required: true },
     results: {
       nationality: {
         count: { type: Number },
