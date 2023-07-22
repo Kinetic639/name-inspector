@@ -16,3 +16,11 @@ module.exports = {
     serverComponentsExternalPackages: ["mongoose"],
   },
 };
+module.exports = {
+  env: {
+    apiBaseUrl:
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:3000"
+        : "https://name-inspector.vercel.app/",
+  },
+};
