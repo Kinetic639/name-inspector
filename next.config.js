@@ -21,6 +21,6 @@ module.exports = {
     apiBaseUrl:
       process.env.NODE_ENV !== "production"
         ? "http://localhost:3000"
-        : "https://name-inspector.vercel.app/",
+        : "https://name-inspector-kinetic639.vercel.app",
   },
 };
