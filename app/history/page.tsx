@@ -4,6 +4,9 @@ import { SearchResult } from "@/types";
 const History = async () => {
   const historyRes = await getSearchHistory();
   const history: SearchResult[] = historyRes.searchHistory;
+  if (!history) {
+    return <div>No history to preview</div>;
+  }
   return (
     <div className="flex-col space-y-14">
       <table className="w-full table-auto ">
@@ -17,7 +20,7 @@ const History = async () => {
             </th>
             <th
               scope="col"
-              className="px-5 font-semibold py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+              className="px-5 font-semibold py-3 text-sm text-left text-gray-800 uppercase bg-white border-b border-gray-200"
             >
               Name
             </th>
