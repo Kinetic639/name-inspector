@@ -22,7 +22,6 @@ const SearchResults = async ({ searchParams }: Props) => {
 
   const result: SearchResult = {
     search: searchParams.q,
-    searchId: nanoid(),
     results: {
       nationality: nationalityData,
       gender: genderData,
