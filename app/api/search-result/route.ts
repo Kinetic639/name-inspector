@@ -2,24 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import SearchResult from "@/models/searchResult";
 import { searchValidationSchema, validateSchema } from "@/lib/validator";
-
-export async function GET() {
-  try {
-    await dbConnect();
-    return NextResponse.json({
-      message: "search result!!",
-    });
-  } catch (err) {
-    console.error("Error occurred: ", err);
-  }
-}
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
-  try {
-    await dbConnect();
-  } catch (err) {
-    console.error("Failed to connect to the database!", err);
-  }
+  await dbConnect();
 
   const data = await req.json();
 
@@ -36,5 +22,6 @@ export async function POST(req: NextRequest) {
 
   const newSearchResult = new SearchResult({ ...data });
   await newSearchResult.save();
+  revalidatePath("/history");
   return NextResponse.json({ newSearchResult });
 }

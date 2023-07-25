@@ -3,6 +3,7 @@ import { GenderizeResponse, NationalizeResponse, SearchResult } from "@/types";
 import getGenderData from "@/lib/getGenderData";
 import CopyButton from "@/components/CopyButton";
 import createSearchResult from "@/lib/createSearchResult";
+import { nanoid } from "nanoid";
 
 type Props = {
   searchParams: { [q: string]: string };
@@ -21,6 +22,7 @@ const SearchResults = async ({ searchParams }: Props) => {
 
   const result: SearchResult = {
     search: searchParams.q,
+    searchId: nanoid(),
     results: {
       nationality: nationalityData,
       gender: genderData,
