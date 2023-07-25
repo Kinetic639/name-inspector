@@ -1,6 +1,7 @@
-import { model, models, Schema } from "mongoose";
+import { Model, model, models, Schema } from "mongoose";
+import { SearchResult } from "@/types";
 
-const SearchResultSchema = new Schema(
+const SearchResultSchema = new Schema<SearchResult>(
   {
     search: { type: String, trim: true, required: true },
     results: {
@@ -28,4 +29,4 @@ const SearchResultSchema = new Schema(
 const SearchResult =
   models?.SearchResult || model("SearchResult", SearchResultSchema);
 
-export default SearchResult;
+export default SearchResult as Model<SearchResult>;

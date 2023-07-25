@@ -2,6 +2,7 @@ import Joi, { ObjectSchema } from "joi";
 
 export const searchValidationSchema = Joi.object().keys({
   search: Joi.string().required(),
+  searchId: Joi.string(),
   results: {
     nationality: {
       count: Joi.number(),

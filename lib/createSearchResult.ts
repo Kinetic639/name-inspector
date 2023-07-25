@@ -5,6 +5,6 @@ export default async function (searchResult: SearchResult) {
     method: "POST",
     body: JSON.stringify(searchResult),
   });
-  if (!res.ok) throw new Error("Failed to save results to the databe");
+  if (!res.ok) throw new Error("Failed to save results to the database");
   return res.json();
 }

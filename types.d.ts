@@ -18,6 +18,7 @@ export type GenderizeResponse = {
 
 export type SearchResult = {
   search: string;
+  createdAt?: Date;
   results: {
     nationality: NationalizeResponse;
     gender: GenderizeResponse;

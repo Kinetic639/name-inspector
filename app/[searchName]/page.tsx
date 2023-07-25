@@ -3,6 +3,7 @@ import { GenderizeResponse, NationalizeResponse, SearchResult } from "@/types";
 import getGenderData from "@/lib/getGenderData";
 import CopyButton from "@/components/CopyButton";
 import createSearchResult from "@/lib/createSearchResult";
+import { nanoid } from "nanoid";
 
 type Props = {
   searchParams: { [q: string]: string };

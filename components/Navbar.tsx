@@ -16,6 +16,11 @@ const Navbar = () => {
         />
       </Link>
       <div className="flex gap-5">
+        <div className="flex items-center">
+          <Link className="" href="/history">
+            History
+          </Link>
+        </div>
         <Search />
         <button className="block m-0">
           Sign In <span aria-hidden="true">&rarr;</span>
