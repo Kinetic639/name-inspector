@@ -9,9 +9,26 @@ const Search = () => {
 
   const handleSearchName = (event: FormEvent) => {
     event.preventDefault();
+    const latinLettersRegex = /^[A-Za-z]+$/;
+
+    if (!latinLettersRegex.test(searchQuery)) {
+      alert("Incorrect Name!");
+      return;
+    }
+
     const encodedSearchQuery = encodeURI(searchQuery);
     router.push(`/search?q=${encodedSearchQuery}`);
     setSearchQuery("");
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+
+    const lettersOnlyRegex = /^[A-Za-z]*$/;
+
+    if (lettersOnlyRegex.test(inputValue)) {
+      setSearchQuery(inputValue);
+    }
   };
 
   return (
@@ -23,7 +40,7 @@ const Search = () => {
         type="text"
         id="search-input"
         value={searchQuery}
-        onChange={(event) => setSearchQuery(event.target.value)}
+        onChange={handleChange}
         className="border flex-1 bg-gray-100 border-gray-400 focus:bg-white text-sm rounded-lg focus:border-gray-500 block p-2.5 focus:outline-gray-400 focus:ring-gray-300"
         placeholder="Search Name..."
         required
