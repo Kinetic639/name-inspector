@@ -5,6 +5,6 @@ export default async function () {
   const res = await fetch(`${process.env.apiBaseUrl}/api/history`, {
     next: { revalidate: 1 },
   });
-  if (!res.ok) throw new Error("Failed to fetch results from db");
+  if (!res.ok) throw new Error("Failed to fetch search history");
   return res.json();
 }
