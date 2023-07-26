@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/utils/authOptions";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 const SearchHistory = async () => {
   const session = await getServerSession(authOptions);
   const historyRes = await getSearchHistory();
