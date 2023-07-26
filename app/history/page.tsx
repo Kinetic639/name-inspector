@@ -4,13 +4,13 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/utils/authOptions";
 import { redirect } from "next/navigation";
 
-const History = async () => {
+const SearchHistory = async () => {
   const session = await getServerSession(authOptions);
   const historyRes = await getSearchHistory();
   const history: SearchResult[] = historyRes.searchHistory;
 
   if (!session) {
-    redirect("/api/auth/signin?callbackUrl=/server");
+    redirect("/api/auth/signin?callbackUrl=/");
   }
 
   return (
@@ -109,4 +109,4 @@ const History = async () => {
     </div>
   );
 };
-export default History;
+export default SearchHistory;

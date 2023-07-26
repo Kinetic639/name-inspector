@@ -10,8 +10,11 @@ const AuthMenu = () => {
 
   if (session && session.user) {
     return (
-      <div className="flex items-center">
-        <Link href="/api/auth/signout">{session.user.name}</Link>
+      <div className="flex items-center gap-5">
+        <Link className="" href="/history">
+          Search History
+        </Link>
+        <Link href="/api/auth/signout">Sign Out</Link>
       </div>
     );
   } else {

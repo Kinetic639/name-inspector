@@ -18,18 +18,15 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        // This is where you need to retrieve user data
-        // to verify with credentials
-        // Docs: https://next-auth.js.org/configuration/providers/credentials
         const user = {
           id: "42",
-          name: "marian",
+          username: "admin",
           password: "admin",
           role: "admin",
         };
 
         if (
-          credentials?.username === user.name &&
+          credentials?.username === user.username &&
           credentials?.password === user.password
         ) {
           return user;
@@ -45,7 +42,7 @@ export const authOptions: NextAuthOptions = {
       if (user) token.role = user.role;
       return token;
     },
-    // If you want to use the role in client components
+
     async session({ session, token }) {
       if (session?.user) session.user.role = token.role;
       return session;
