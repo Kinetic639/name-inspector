@@ -1,3 +1,6 @@
+import { DefaultSession, DefaultUser } from "next-auth";
+import { DefaultJWT } from "next-auth/jwt";
+
 export type NationalityCountry = {
   country_id: string;
   probability: number;
@@ -24,3 +27,23 @@ export type SearchResult = {
     gender: GenderizeResponse;
   };
 };
+
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      username: string;
+      role: string;
+    } & DefaultSession;
+  }
+
+  interface User extends DefaultUser {
+    role: string;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT extends DefaultJWT {
+    role: string;
+  }
+}

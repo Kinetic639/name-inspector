@@ -1,9 +1,8 @@
 import getNationality from "@/lib/getNationality";
 import { GenderizeResponse, NationalizeResponse, SearchResult } from "@/types";
 import getGenderData from "@/lib/getGenderData";
-import CopyButton from "@/components/CopyButton";
+import CopyButton from "@/app/components/CopyButton";
 import createSearchResult from "@/lib/createSearchResult";
-import { nanoid } from "nanoid";
 
 type Props = {
   searchParams: { [q: string]: string };
@@ -29,6 +28,14 @@ const SearchResults = async ({ searchParams }: Props) => {
   };
 
   await createSearchResult(result);
+
+  const noResults = (
+    <div className="block p-6">
+      <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">
+        No results found for name: {nationalityData.name}
+      </h5>
+    </div>
+  );
 
   const content = (
     <div className="block p-6">
@@ -63,6 +70,10 @@ const SearchResults = async ({ searchParams }: Props) => {
     </div>
   );
 
-  return <div className="flex-col space-y-14">{content}</div>;
+  return (
+    <div className="flex-col space-y-14">
+      {!nationalityData.count && !genderData.count ? noResults : content}
+    </div>
+  );
 };
 export default SearchResults;
