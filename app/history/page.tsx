@@ -1,12 +1,18 @@
 import getSearchHistory from "@/lib/getSearchHistory";
 import { SearchResult } from "@/types";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/utils/authOptions";
+import { redirect } from "next/navigation";
 
 const History = async () => {
+  const session = await getServerSession(authOptions);
   const historyRes = await getSearchHistory();
   const history: SearchResult[] = historyRes.searchHistory;
-  if (!history) {
-    return <div>No history to preview</div>;
+
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/server");
   }
+
   return (
     <div className="flex-col space-y-14">
       <table className="w-full table-auto ">
