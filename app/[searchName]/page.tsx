@@ -1,8 +1,7 @@
 import getNationality from "@/lib/getNationality";
-import { GenderizeResponse, NationalizeResponse, SearchResult } from "@/types";
+import { GenderizeResponse, NationalizeResponse } from "@/types";
 import getGenderData from "@/lib/getGenderData";
 import CopyButton from "@/app/components/CopyButton";
-import createSearchResult from "@/lib/createSearchResult";
 
 type Props = {
   searchParams: { [q: string]: string };
@@ -18,16 +17,6 @@ const SearchResults = async ({ searchParams }: Props) => {
     nationalityReq,
     genderReq,
   ]);
-
-  const result: SearchResult = {
-    search: searchParams.q,
-    results: {
-      nationality: nationalityData,
-      gender: genderData,
-    },
-  };
-
-  await createSearchResult(result);
 
   const noResults = (
     <div className="block p-6">
