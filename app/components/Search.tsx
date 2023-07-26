@@ -2,19 +2,19 @@
 
 import React, { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import createSearchResult from "@/lib/createSearchResult";
+import getNameResults from "@/lib/getNameResults";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
-  const handleSearchName = (event: FormEvent) => {
+  const handleSearchName = async (event: FormEvent) => {
     event.preventDefault();
-    const latinLettersRegex = /^[A-Za-z]+$/;
 
-    if (!latinLettersRegex.test(searchQuery)) {
-      alert("Incorrect Name!");
-      return;
-    }
+    const searchNameResult = await getNameResults(searchQuery);
+
+    await createSearchResult(searchNameResult);
 
     const encodedSearchQuery = encodeURI(searchQuery);
     router.push(`/search?q=${encodedSearchQuery}`);
